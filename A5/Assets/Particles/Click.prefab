@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 2970467311985764206}
   - component: {fileID: 2094023477381215524}
   - component: {fileID: 3683699424465423650}
+  - component: {fileID: 4545870962182845009}
   m_Layer: 0
   m_Name: Click
   m_TagString: Click
@@ -4824,3 +4825,15 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.52, y: 1.5200002, z: 1.4300001}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &4545870962182845009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5954778179866377194}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 889f69a5f178b9a479ebb55a05f0b7c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

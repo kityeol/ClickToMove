@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Range
   - Click
+  - Enemy
   layers:
   - Default
   - TransparentFX

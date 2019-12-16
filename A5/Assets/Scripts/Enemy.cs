@@ -5,24 +5,36 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
     public GameObject deathEffect;
+    public float health;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        health = 100;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
     private void Death()
     {
 
     }
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        Instantiate(deathEffect, transform.position, Quaternion.identity);
-        Destroy(this.gameObject);
+        StartCoroutine(Wait());
+        if (health <= 0)
+        {
+            Instantiate(deathEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator Wait()
+    {
+        yield return new WaitForSeconds(5);
+        health -= 25;
     }
 }
