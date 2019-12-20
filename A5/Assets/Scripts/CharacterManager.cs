@@ -10,6 +10,8 @@ public class CharacterManager : MonoBehaviour
     public ParticleSystem enemyParticle;
     public ParticleSystem clickParticle;
     bool foundCharacter = false;
+    public GameObject target;
+    Vector3 walkPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -34,27 +36,45 @@ public class CharacterManager : MonoBehaviour
                     {
                         if (item == characterGameObject)
                         {
-                            characterList.Remove(characterGameObject);
+                            item.GetComponent<CharacterMove>().SetTarget(null);
+                            item.GetComponent<CharacterMove>().SetDestination(item.transform.position);
+                            characterGameObject.GetComponent<CharacterMove>().selected.SetActive(false);
+                            characterList.Remove(item);
                             foundCharacter = true;
                             break;
                         }
                     }
-                    if(foundCharacter == false)
+                    if (foundCharacter == false)
                     {
+                        characterGameObject.GetComponent<CharacterMove>().selected.SetActive(true);
                         characterList.Add(characterGameObject);
                     }
-                    
-                }
 
-                foreach (var item in characterList)
+                }
+                else if (characterGameObject.CompareTag("Enemy"))
                 {
-                    CharacterMove move = item.GetComponent<CharacterMove>();
-                    move.Walk(hit);
+                    target = characterGameObject;
+                    Instantiate(enemyParticle, hit.point, Quaternion.identity);
+                }
+                else
+                {
+                    Instantiate(clickParticle, hit.point, Quaternion.identity);
+                    target = null;
+                    walkPosition = hit.point;
                 }
             }
         }
+        foreach (var item in characterList)
+        {
+            CharacterMove move = item.GetComponent<CharacterMove>();
+            move.SetTarget(target);
+            if (target == null)
+            {
+                move.SetDestination(walkPosition);
+            }
+        }
 
-        
+
 
 
     }

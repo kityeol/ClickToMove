@@ -6,23 +6,26 @@ public class Enemy : MonoBehaviour
 {
     public GameObject deathEffect;
     public float health;
-
+    public float radius = 2.0f;
     // Start is called before the first frame update
     void Start()
     {
         health = 100;
+        InvokeRepeating("FindPlayers", 1.0f, 1.0f);
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
     private void Death()
     {
 
     }
-    private void OnTriggerStay(Collider other)
+
+
+    public void TakeDamage()
     {
         StartCoroutine(Wait());
         if (health <= 0)
@@ -36,5 +39,17 @@ public class Enemy : MonoBehaviour
     {
         yield return new WaitForSeconds(5);
         health -= 25;
+    }
+
+    void FindPlayers()
+    {
+        Collider[] colliders = Physics.OverlapSphere(transform.position, radius);
+        foreach (var collider in colliders)
+        {
+            if (collider.gameObject.CompareTag("Player"))
+            {
+                collider.gameObject.GetComponent<CharacterMove>().TakeDamage();
+            }
+        }
     }
 }

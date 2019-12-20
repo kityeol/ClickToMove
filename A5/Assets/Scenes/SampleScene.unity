@@ -370,6 +370,7 @@ MonoBehaviour:
     type: 3}
   clickParticle: {fileID: 2970467311985764206, guid: 0302ff372fdd7f0468a4d81a022deee9,
     type: 3}
+  target: {fileID: 0}
 --- !u!4 &203111263
 Transform:
   m_ObjectHideFlags: 0
@@ -471,6 +472,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: playerDeathEffect
+      value: 
+      objectReference: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
+        type: 3}
     - target: {fileID: 1607259135228790937, guid: 55f63e9b495951d4c9953b5f40ec81d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -678,6 +690,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: playerDeathEffect
+      value: 
+      objectReference: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
+        type: 3}
     - target: {fileID: 1607259135228790937, guid: 55f63e9b495951d4c9953b5f40ec81d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -903,12 +926,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 750263423}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8578458
+  m_Radius: 0.24
+  m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9517791, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!54 &750263425
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -921,7 +944,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1110,13 +1133,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.42887056, y: -0, z: -0, w: 0.90336597}
-  m_LocalPosition: {x: 0, y: 10.18, z: -10.66}
+  m_LocalRotation: {x: 0.6059344, y: -0.0016190831, z: -0.003457482, w: 0.79550546}
+  m_LocalPosition: {x: 0.62, y: 8.97, z: -8.13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 50.792004, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 74.587006, y: -1.4590001, z: -1.6090001}
 --- !u!114 &963194229
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,6 +1331,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: range
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: playerDeathEffect
+      value: 
+      objectReference: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
+        type: 3}
     - target: {fileID: 1607259135228790937, guid: 55f63e9b495951d4c9953b5f40ec81d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -1355,6 +1389,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
     type: 3}
   health: 0
+  radius: 2
 --- !u!135 &1524472822
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -1534,6 +1569,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
     type: 3}
   health: 0
+  radius: 2
 --- !u!1 &1572481836 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7695152123302133416, guid: 55f63e9b495951d4c9953b5f40ec81d9,
@@ -1548,12 +1584,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1572481836}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8578458
+  m_Radius: 0.24
+  m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9517791, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!54 &1572481838
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1566,7 +1602,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -1800,12 +1836,12 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1664970845}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8578458
+  m_Radius: 0.24
+  m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9517791, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!54 &1664970847
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1818,7 +1854,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2114,6 +2150,7 @@ MonoBehaviour:
   deathEffect: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
     type: 3}
   health: 0
+  radius: 2
 --- !u!135 &1988493431
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -2384,8 +2421,14 @@ PrefabInstance:
     - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
         type: 3}
       propertyPath: range
-      value: 30
+      value: 2
       objectReference: {fileID: 0}
+    - target: {fileID: 1867657954216540435, guid: 55f63e9b495951d4c9953b5f40ec81d9,
+        type: 3}
+      propertyPath: playerDeathEffect
+      value: 
+      objectReference: {fileID: 1031393306849284991, guid: 46e66c5d824217c4bb35e90fe3b5d08e,
+        type: 3}
     - target: {fileID: 1607259135228790937, guid: 55f63e9b495951d4c9953b5f40ec81d9,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -2416,7 +2459,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -2428,9 +2471,9 @@ CapsuleCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8296172668979416817}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 1.8578458
+  m_Radius: 0.24
+  m_Height: 1.84
   m_Direction: 1
-  m_Center: {x: 0, y: 0.9517791, z: 0}
+  m_Center: {x: 0, y: 0.9, z: 0}

@@ -8,63 +8,64 @@ public class CharacterMove : MonoBehaviour
     public ParticleSystem clickParticle;
     public ParticleSystem enemyParticle;
     public float range = 10.0f;
+    public float health;
+    GameObject target;
+    public GameObject playerDeathEffect;
+    public GameObject selected;
 
     public Animator anim;
-    //public enum CharacterState { Walking, Attacking }
-    //public static CharacterState currentState;
     private bool Walking = false;
 
     void Start()
     {
+        health = 100;
         agent = GetComponent<NavMeshAgent>();
         anim = GetComponent<Animator>();
     }
 
     void Update()
     {
-        if (Vector3.Distance(agent.destination, transform.position) > range)
-        {
-            agent.isStopped = false;
-            Vector3 lookAt = new Vector3(agent.destination.x, agent.transform.position.y, agent.destination.z);
-            agent.transform.LookAt(lookAt);
-            anim.SetBool("isWalking", true);
-        }
-        else
-        {
-            StartCoroutine(Wait());
-            agent.isStopped = true;
-        }
+        agent.isStopped = false;
+        Vector3 lookAt = new Vector3(agent.destination.x, agent.transform.position.y, agent.destination.z);
+        agent.transform.LookAt(lookAt);
+
         if (Vector3.Magnitude(agent.velocity) == 0)
         {
             anim.SetBool("isWalking", false);
         }
-    }
-
-    public void Walk(RaycastHit hit)
-    {
-        agent.destination = hit.point;
-
-        if (hit.collider.tag == "Enemy")
+        else
         {
-            Instantiate(enemyParticle, hit.point, Quaternion.identity);
+            anim.SetBool("isWalking", true);
+        }
+
+        if (target == null)
+        {
+            return;
+        }
+
+        agent.destination = target.transform.position;
+
+        if (Vector3.Distance(agent.destination, transform.position) > range)
+        { 
+            anim.SetBool("isWalking", true);
         }
         else
         {
-            Instantiate(clickParticle, hit.point, Quaternion.identity);
-        }
-        
-
-    }
-
-    public void Attack(RaycastHit hit)
-    {
-        if (hit.transform.gameObject.CompareTag("Enemy") && Vector3.Distance(hit.transform.position, transform.position) <= range)
-        {
-            anim.SetBool("isWalking", false);
-            agent.destination = transform.position;
+            target.GetComponent<Enemy>().TakeDamage();
             StartCoroutine(Wait());
             agent.isStopped = true;
         }
+
+    }
+
+    public void SetTarget(GameObject t)
+    {
+        target = t;
+    }
+
+    public void SetDestination(Vector3 des)
+    {
+        agent.SetDestination(des);
     }
     
     IEnumerator Wait()
@@ -72,5 +73,21 @@ public class CharacterMove : MonoBehaviour
         anim.SetBool("Attacking", true);
         yield return new WaitForSeconds(1);
         anim.SetBool("Attacking", false);
+    }
+
+    public void TakeDamage()
+    {
+        StartCoroutine(Wait2());
+        if (health <= 0)
+        {
+            Instantiate(playerDeathEffect, transform.position, Quaternion.identity);
+            Destroy(this.gameObject);
+        }
+    }
+
+    IEnumerator Wait2() //i'm sorry for the awful naming convention i'm Stressed
+    {
+        yield return new WaitForSeconds(5);
+        health -= 5;
     }
 }
